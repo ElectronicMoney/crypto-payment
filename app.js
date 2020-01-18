@@ -1,11 +1,17 @@
-const express = require('express');
+const express    = require('express');
+const config     = require('./config');
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 8080;
+
+// Json body parser middleware
+app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
-    res.send('Hello World!');
+    res.send({
+        username: 'Emoney'
+    });
 });
 
 
-app.listen(PORT, console.log(`Listening on port ${PORT}`));
+app.listen(config.PORT, console.log(`Listening on port ${config.PORT}`));
